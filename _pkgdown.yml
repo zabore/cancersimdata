@@ -1,0 +1,35 @@
+url: http://www.emilyzabor.com/cancersimdata/
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    bg: "#ffffff"
+    fg: "#4b4b45"
+    primary: "#0078bf"
+    success: "#f08122"
+
+development:
+  mode: release
+  version_label: default
+
+home:
+  sidebar:
+    structure: [links, license, citation, authors, dev]
+
+navbar:
+  type: light
+  structure:
+    left:  [home, reference]
+    right: [search, github]
+  components:
+    home:
+      icon: fa-home
+      href: index.html
+    github:
+      icon: fa-github
+      href: http://github.com/zabore/ppseq
+
+reference:
+  - title: Datasets
+  - contents:
+      - bc_rt_data
