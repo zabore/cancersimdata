@@ -14,7 +14,7 @@ A data frame with 3,000 rows and 13 columns:
 \item{rt}{PMRT indicator, 1 = yes, 0 = no}
 \item{age_dx_yrs}{Age at diagnosis in years}
 \item{tumor_size_cm}{Tumor size in cm}
-\item{grade_3_vs_1or2}{Tumor grade, 1 = grade 3, 0 = grade 1 or 2}
+\item{grade}{Tumor grade, I, II, or III}
 \item{n_ln_pos_3_vs_1or2}{Number of positive lymph nodes, 1 = 3,
 0 = 1 or 2}
 \item{nodal_ratio}{Ratio of number of positive lymph nodes to number of
