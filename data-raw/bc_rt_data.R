@@ -164,21 +164,15 @@ bc_rt_data <- tibble(
   mutate(
     # add uniformly distributed start dates (i.e. date of mastectomy)
     date_of_mastectomy = as.Date(runif(1, min(as.Date("1995-01-01")),
-                                       max(as.Date("2015-12-31")))),
-    date_last_follow_up_death = format(date_of_mastectomy +
-      dyears(os_years), "%m/%d/%Y"),
-    date_of_mastectomy = format(date_of_mastectomy, "%m/%d/%Y")
+                                       max(as.Date("2015-12-31"))))
     ) |>
-  ungroup()
-
-bc_rt_data |>
-  # filter(is.na(date_last_follow_up_death)) |>
-  select(
-    os_years,
-    date_of_mastectomy,
-    date_last_follow_up_death
-  ) |>
-  print(n = 20)
+  ungroup() |>
+  mutate(
+    # Create date of last follow-up based on os_years, and format both dates as character
+    date_last_follow_up_death = format(date_of_mastectomy +
+                                         dyears(os_years), "%m/%d/%Y"),
+    date_of_mastectomy = format(date_of_mastectomy, "%m/%d/%Y")
+  )
 
 
 

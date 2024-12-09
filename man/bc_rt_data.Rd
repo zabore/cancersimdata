@@ -28,6 +28,8 @@ sampled lymph nodes}
 \item{optimal_systemic_therapy}{Receipt of optimal systemic therapy,
 1 = yes (endocrine therapy if ER+ or PR+, trastuzumab if Her2+,
 and CHT if ER- and PR-), 0 = no}
+\item{date_of_mastecomy}{Date of mastectomy}
+\item{date_last_follow_up_death}{Date of last follow-up or death}
 }
 }
 }
