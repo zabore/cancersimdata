@@ -1,14 +1,15 @@
 #' Simulated data on overall survival from breast cancer with radiation therapy
 #'
-#' These data are simulated in the context of the use of post-mastectomy
-#' radiation therapy in women with pathologic stage T1-2N1M0 breast cancer.
+#' Synthetic data on post-mastectomy radiation therapy in women with
+#' pathologic stage T1-2N1M0 breast cancer.
 #' Data on various patient and disease characteristics are available.
 #'
 #' @format ## `bc_rt_data`
 #' A data frame with 3,000 rows and 13 columns:
 #' \describe{
-#'   \item{time}{Overall survival time in years}
-#'   \item{event}{Death indicator, 1 = dead, 0 = censored}
+#'  \item{id}{Participant ID}
+#'   \item{os_years}{Overall survival time in years}
+#'   \item{os_event}{Death indicator, 1 = dead, 0 = censored}
 #'   \item{rt}{PMRT indicator, 1 = yes, 0 = no}
 #'   \item{age_dx_yrs}{Age at diagnosis in years}
 #'   \item{tumor_size_cm}{Tumor size in cm}

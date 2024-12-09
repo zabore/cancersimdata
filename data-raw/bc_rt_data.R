@@ -5,12 +5,13 @@
 library(mvtnorm)
 library(tibble)
 library(dplyr)
+library(lubridate)
 
 
 # Set all of the fixed parameters ----------------------------------------------
 
 # sample size
-n <- 3500
+n <- 3000
 
 # Weibull shape and scale parameters
 event_shape <- 1.6
@@ -154,11 +155,32 @@ bc_rt_data <- tibble(
          her2_pos = x9,
          quadrant_inner_vs_other = x10,
          optimal_systemic_therapy = x11) |>
-  # generate a participant ID
-  mutate(id = row_number())|>
-  select(id, os_years, os_event, rt, age_dx_yrs, everything())
+  mutate(
+    # generate a participant ID
+    id = row_number()
+    )|>
+  select(id, os_years, os_event, rt, age_dx_yrs, everything()) |>
+  rowwise() |>
+  mutate(
+    # add uniformly distributed start dates (i.e. date of mastectomy)
+    date_of_mastectomy = as.Date(runif(1, min(as.Date("1995-01-01")),
+                                       max(as.Date("2015-12-31")))),
+    date_last_follow_up_death = format(date_of_mastectomy +
+      dyears(os_years), "%m/%d/%Y"),
+    date_of_mastectomy = format(date_of_mastectomy, "%m/%d/%Y")
+    ) |>
+  ungroup()
 
-)
+bc_rt_data |>
+  # filter(is.na(date_last_follow_up_death)) |>
+  select(
+    os_years,
+    date_of_mastectomy,
+    date_last_follow_up_death
+  ) |>
+  print(n = 20)
+
+
 
 # create the dataset
 usethis::use_data(bc_rt_data, overwrite = TRUE)
